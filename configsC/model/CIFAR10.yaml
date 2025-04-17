@@ -1,0 +1,37 @@
+_target_: srcC.models.CIFAR10_module.CIFAR10LitModule
+
+optimizer:
+#  _target_: torch.optim.Adam
+#  _target_: torch.optim.SGD
+#  _target_: torch.optim.Adagrad
+  _target_: srcC.optim.ys.AdamAGS
+  _partial_: true
+  lr: 0.001
+  weight_decay: 0.0
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 0.1
+  patience: 10
+
+net:
+#  _target_: srcC.models.components.cnnKvit.ViT
+#  image_size: 32       # 输入图像的尺寸
+#  patch_size: 4        # 每个 patch 的尺寸
+#  num_classes: 10       # 分类的类别数
+#  dim: 256             # 嵌入维度
+#  depth: 6              # Transformer 的深度
+#  heads: 8              # 多头注意力的头数
+#  mlp_dim: 256         # MLP 层的隐藏维度
+
+
+#  _target_: srcC.models.components.demo.MobileNetV2
+  _target_: srcC.models.components.mobilenetv2.MobileNetV2
+#  _target_: srcC.models.components.shufflenetv2.ShuffleNetV2
+#  input_size: 784
+#  lin1_size: 64
+#  lin2_size: 128
+#  lin3_size: 64
+#  output_size: 10
